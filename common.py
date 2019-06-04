@@ -151,7 +151,7 @@ def fid_to_image(fid, pid, image_root, image_size):
     # decode_jpeg or decode_png, each of which can decode both.
     # Sounds ridiculous, but is true:
     # https://github.com/tensorflow/tensorflow/issues/9356#issuecomment-309144064
-    image_decoded = tf.image.decode_jpeg(image_encoded, channels=3)
+    image_decoded = tf.image.decode_jpeg(image_encoded, channels=3, dct_method='INTEGER_ACCURATE')
     image_resized = tf.image.resize_images(image_decoded, image_size)
 
     return image_resized, fid, pid
